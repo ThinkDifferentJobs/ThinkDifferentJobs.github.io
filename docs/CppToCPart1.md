@@ -2,6 +2,7 @@
 layout: page
 title: "C++ To C Part 1"
 permalink: /cpp2cp1
+theme: jekyll-theme-minimal
 ---
 
 # C++ to C <p style="font-size: 14px;">Part 1</p>
