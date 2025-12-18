@@ -1,0 +1,101 @@
+---
+layout: default
+title: "C++ to C Part 1"
+permalink: /cpp-to-c-part-1/
+---
+
+<h1 id="c-to-c-part-1">C++ to C Part 1</h1>
+
+<div class="warning">
+    <strong>Warning:</strong> This is a work in progress page!
+</div>
+
+<p>
+    Welcome to my C++ to C guide. This is part 1 of the series. You do not need to know C++ to use this guide. 
+    It is helpful that you already have at least a basic understanding of C and the standard library.
+</p>
+
+<h2 id="c-std-vector">C++ std::vector</h2>
+
+<p>
+    In C++ a common array type is a vector. A vector is a resizable array that <strong>uses the heap</strong>. 
+    In C++, you create a vector as:
+</p>
+<pre><code class="lang-C++">std::vector&lt;type&gt; MyVector;
+</code></pre>
+
+<p>and if you want to define an initial amount of items:</p>
+<pre><code class="lang-C++">std::vector&lt;type&gt; MyVector(length);
+</code></pre>
+
+<p>
+    A vector is a resizable array and a common way to resize it is by pushing an object onto it and popping an object out of it. 
+    This is done by 2 functions:
+</p>
+<pre><code class="lang-C++">MyVector.push_back(Item_To_Insert);</code></pre>
+
+<p>and to take something out:</p>
+<pre><code class="lang-C++">MyVector.pop_back();</code></pre>
+
+<p>How I tend to write this in C is using a heap allocated array. This can be done with:</p>
+<pre><code class="lang-C">type* MyArray = (type*)malloc(sizeof(type) * length);
+</code></pre>
+
+<p>
+    In C++, a vector automatically gets freed. In C, you must free the array yourself. This can be done with:
+</p>
+<pre><code class="lang-C">free(MyArray);
+</code></pre>
+
+<p>
+    When using a heap allocated array, I usually have a variable (like an int) to keep track of how many items are 
+    currently in the array. This is not needed but can be helpful. In C to add something onto a heap allocated array 
+    you can do:
+</p>
+<pre><code class="lang-C">MyArray = realloc(MyArray, ((length + 1) * sizeof(type)));
+MyArray[length++] = item;
+</code></pre>
+
+<p>and if you want it more compact:</p>
+<pre><code class="lang-C">MyArray = realloc(MyArray, sizeof(type) * (length + 1)), MyArray[length++] = item;
+// Note: If realloc fails, it returns NULL, the original memory is not freed, and a memory leak will happen.
+</code></pre>
+
+<p>
+    To perform a <code>pop_back</code> in C, you can perform the same operation for adding an item but subtract the length. 
+    This can be performed with:
+</p>
+<pre><code class="lang-C">MyArray = realloc(MyArray, ((length - 1) * sizeof(type)));
+</code></pre>
+
+<div class="note">
+    <strong>Note:</strong> More content coming soon.
+</div>
+
+<!-- Optional inline CSS if you want this page to carry its own styles -->
+<style>
+    pre {
+        background-color: #f4f4f4;
+        padding: 10px;
+        border-left: 4px solid #007acc;
+        overflow-x: auto;
+    }
+
+    code {
+        font-family: Consolas, monospace;
+    }
+
+    .warning {
+        border-left: 4px solid #ff4d4f;
+        background-color: #fff0f0;
+        padding: 10px 15px;
+        margin: 15px 0;
+    }
+
+    .note {
+        border-left: 4px solid #1890ff;
+        background-color: #e6f7ff;
+        padding: 10px 15px;
+        margin: 15px 0;
+    }
+</style>
