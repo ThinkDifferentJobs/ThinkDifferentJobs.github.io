@@ -2,7 +2,6 @@
 layout: default
 title: "C++ To C Part 1"
 permalink: /cpp2cp1
-theme: jekyll-theme-minimal
 ---
 
 # C++ to C Part 1
