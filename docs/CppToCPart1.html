@@ -2,23 +2,22 @@
 layout: post
 title: "C++ to C Part 1"
 permalink: /cpp-to-c-part-1/
+description:
 ---
-
-<h1 id="c-to-c-part-1">C++ to C Part 1</h1>
 
 <div class="warning">
     <strong>Warning:</strong> This is a work in progress page!
 </div>
 
 <p>
-    Welcome to my C++ to C guide. This is part 1 of the series. You do not need to know C++ to use this guide. 
+    Welcome to my C++ to C guide. This is part 1 of the series. You do not need to know C++ to use this guide.
     It is helpful that you already have at least a basic understanding of C and the standard library.
 </p>
 
 <h2 id="c-std-vector">C++ std::vector</h2>
 
 <p>
-    In C++ a common array type is a vector. A vector is a resizable array that <strong>uses the heap</strong>. 
+    In C++ a common array type is a vector. A vector is a resizable array that <strong>uses the heap</strong>.
     In C++, you create a vector as:
 </p>
 <pre><code class="lang-C++">std::vector&lt;type&gt; MyVector;
@@ -29,7 +28,8 @@ permalink: /cpp-to-c-part-1/
 </code></pre>
 
 <p>
-    A vector is a resizable array and a common way to resize it is by pushing an object onto it and popping an object out of it. 
+    A vector is a resizable array and a common way to resize it is by pushing an object onto it and popping an object
+    out of it.
     This is done by 2 functions:
 </p>
 <pre><code class="lang-C++">MyVector.push_back(Item_To_Insert);</code></pre>
@@ -48,21 +48,22 @@ permalink: /cpp-to-c-part-1/
 </code></pre>
 
 <p>
-    When using a heap allocated array, I usually have a variable (like an int) to keep track of how many items are 
-    currently in the array. This is not needed but can be helpful. In C to add something onto a heap allocated array 
+    When using a heap allocated array, I usually have a variable (like an int) to keep track of how many items are
+    currently in the array. This is not needed but can be helpful. In C to add something onto a heap allocated array
     you can do:
 </p>
-<pre><code class="lang-C">MyArray = realloc(MyArray, ((length + 1) * sizeof(type)));
+<pre><code class="lang-C">MyArray = realloc(MyArray, ((length + 1) * sizeof(type)));  <br>
 MyArray[length++] = item;
 </code></pre>
 
 <p>and if you want it more compact:</p>
-<pre><code class="lang-C">MyArray = realloc(MyArray, sizeof(type) * (length + 1)), MyArray[length++] = item;
+<pre><code class="lang-C">MyArray = realloc(MyArray, sizeof(type) * (length + 1)), MyArray[length++] = item; <br>
 // Note: If realloc fails, it returns NULL, the original memory is not freed, and a memory leak will happen.
 </code></pre>
 
 <p>
-    To perform a <code>pop_back</code> in C, you can perform the same operation for adding an item but subtract the length. 
+    To perform a <strong>pop_back</strong> in C, you can perform the same operation for adding an item but subtract the
+    length.
     This can be performed with:
 </p>
 <pre><code class="lang-C">MyArray = realloc(MyArray, ((length - 1) * sizeof(type)));
@@ -75,27 +76,46 @@ MyArray[length++] = item;
 <!-- Optional inline CSS if you want this page to carry its own styles -->
 <style>
     pre {
-        background-color: #f4f4f4;
+        background-color: #f4f4f4b1;
         padding: 10px;
         border-left: 4px solid #007acc;
+        display: inline-block;
+        /* Or display: table; */
+        width: fit-content;
         overflow-x: auto;
+        clip-path: polygon(0 0,
+                100% 0,
+                100% 100%,
+                40% 160%,
+                /* bottom-right goes down */
+                0 100%);
     }
 
     code {
         font-family: Consolas, monospace;
+        padding: 7px;
+        color: color-mix(in srgb-linear, black 95%, gainsboro 10%)
     }
 
     .warning {
         border-left: 4px solid #ff4d4f;
-        background-color: #fff0f0;
+        background-color: #fff0f071;
         padding: 10px 15px;
         margin: 15px 0;
+        color: rgb(54, 54, 54);
     }
 
     .note {
         border-left: 4px solid #1890ff;
-        background-color: #e6f7ff;
+        background-color: #bdeaffb9;
         padding: 10px 15px;
         margin: 15px 0;
+        color: rgb(54, 54, 54);
+        display: inline-fit;
+        width: fit-content;
+    }
+
+    strong {
+        color: rgb(73, 73, 73);
     }
 </style>
