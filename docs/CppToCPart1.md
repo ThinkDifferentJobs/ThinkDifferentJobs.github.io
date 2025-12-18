@@ -4,8 +4,8 @@ permalink: /cpp2cp1
 
 # C++ to C <p style="font-size: 14px;">Part 1</p>
 
-[!WARNING]
-This is a work in progress page!
+> [!WARNING]
+> This is a work in progress page!
 
 Welcome to my C++ to C guide. This is part 1 of the series. You do not need to know C++ to use this guide. It is helpful that you already have at least a basic understanding of C and the standard library.
 
@@ -49,5 +49,5 @@ To preform a `pop_back` in C, you can preform the same operation for adding an i
 MyArray = realloc(MyArray, ((length - 1) * sizeof(type)));
 ```
 
-[!NOTE]
-More content coming soon.
+> [!NOTE]
+> More content coming soon.
